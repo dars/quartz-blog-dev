@@ -13,7 +13,3 @@ Software Craftsmanship
 - Software Architecture
 - System Design
 - Productivity
-
-## **Recent Notes**
-
-持續更新中。

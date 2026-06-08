@@ -43,36 +43,38 @@ export default ((userOpts?: Partial<Options>) => {
             const title = page.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title
             const tags = page.frontmatter?.tags ?? []
 
+            const cover = page.frontmatter?.cover as string | undefined
+            const description = page.frontmatter?.description as string | undefined
+
             return (
               <li class="recent-li">
-                <div class="section">
-                  <div class="desc">
-                    <h3>
-                      <a href={resolveRelative(fileData.slug!, page.slug!)} class="internal">
-                        {title}
-                      </a>
-                    </h3>
+                <a href={resolveRelative(fileData.slug!, page.slug!)} class="recent-card-link">
+                  {cover && (
+                    <div class="card-cover">
+                      <img src={cover} alt={title} />
+                    </div>
+                  )}
+                  <div class="card-body">
+                    <h3>{title}</h3>
+                    {description && <p class="card-desc">{description}</p>}
+                    <div class="card-meta">
+                      {page.dates && (
+                        <span class="meta">
+                          <Date date={getDate(cfg, page)!} locale={cfg.locale} />
+                        </span>
+                      )}
+                      {opts.showTags && tags.length > 0 && (
+                        <ul class="tags">
+                          {tags.map((tag) => (
+                            <li>
+                              <span class="tag-link">#{tag}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
                   </div>
-                  {page.dates && (
-                    <p class="meta">
-                      <Date date={getDate(cfg, page)!} locale={cfg.locale} />
-                    </p>
-                  )}
-                  {opts.showTags && (
-                    <ul class="tags">
-                      {tags.map((tag) => (
-                        <li>
-                          <a
-                            class="internal tag-link"
-                            href={resolveRelative(fileData.slug!, `tags/${tag}` as FullSlug)}
-                          >
-                            {tag}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
+                </a>
               </li>
             )
           })}

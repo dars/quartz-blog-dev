@@ -5,7 +5,16 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
+  afterBody: [
+    Component.ConditionalRender({
+      component: Component.RecentNotes({
+        title: "最新文章",
+        limit: 10,
+        showTags: true,
+      }),
+      condition: (page) => page.fileData.slug === "index",
+    }),
+  ],
   footer: Component.Footer({
     links: {
       Threads: "https://www.threads.com/@code4soul.dev",
@@ -20,12 +29,17 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.Breadcrumbs(),
       condition: (page) => page.fileData.slug !== "index",
     }),
+    Component.ConditionalRender({
+      component: Component.CoverImage(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
     Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.TagList(),
   ],
   left: [
     Component.PageTitle(),
+    Component.ProfileImage(),
     Component.MobileOnly(Component.Spacer()),
     Component.Flex({
       components: [
@@ -47,6 +61,7 @@ export const defaultListPageLayout: PageLayout = {
   beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
   left: [
     Component.PageTitle(),
+    Component.ProfileImage(),
     Component.MobileOnly(Component.Spacer()),
     Component.Flex({
       components: [
