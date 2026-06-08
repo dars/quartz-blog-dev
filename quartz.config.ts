@@ -9,7 +9,7 @@ import * as Plugin from "./quartz/plugins"
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "code4soul",
-    pageTitleSuffix: " | code4soul",
+    pageTitleSuffix: "Building AI Native Workflow | code4soul",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
@@ -30,26 +30,43 @@ const config: QuartzConfig = {
       },
       colors: {
         lightMode: {
-          light: "#f8f7f4",
-          lightgray: "#e8e5e0",
-          gray: "#a8a39c",
-          darkgray: "#5a5550",
-          dark: "#2c2825",
-          secondary: "#5b7fa6",
-          tertiary: "#8aab9e",
-          highlight: "rgba(91, 127, 166, 0.1)",
-          textHighlight: "#f0e68880",
+          light: "#fafaf9",
+
+          lightgray: "#ececec",
+
+          gray: "#71717a",
+
+          darkgray: "#3f3f46",
+
+          dark: "#18181b",
+
+          secondary: "#2563eb",
+
+          tertiary: "#6366f1",
+
+          highlight: "rgba(37,99,235,.08)",
+
+          textHighlight: "#fde04780",
         },
+
         darkMode: {
-          light: "#1a1917",
-          lightgray: "#2e2c2a",
-          gray: "#6e6b67",
-          darkgray: "#ccc8c2",
-          dark: "#e8e4de",
-          secondary: "#7da0c4",
-          tertiary: "#8aab9e",
-          highlight: "rgba(125, 160, 196, 0.12)",
-          textHighlight: "#b3a50280",
+          light: "#18181b",
+
+          lightgray: "#27272a",
+
+          gray: "#a1a1aa",
+
+          darkgray: "#f4f4f5",
+
+          dark: "#fafafa",
+
+          secondary: "#60a5fa",
+
+          tertiary: "#818cf8",
+
+          highlight: "rgba(96,165,250,.10)",
+
+          textHighlight: "#fde04755",
         },
       },
     },

@@ -1,3 +1,119 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+/* -------------------------------- /
+/ Code4Soul Engineering Theme      /
+/ Quartz 4.5.2                     /
+/ -------------------------------- /
+
+:root {
+  --radius: 14px;
+  --content-width: 820px;
+}
+
+/ ---------- Layout ---------- /
+
+.page {
+  max-width: 1600px;
+}
+
+.center article {
+  line-height: 1.85;
+}
+
+/ ---------- Card Style ---------- /
+
+.explorer,
+.graph,
+.backlinks,
+.toc,
+.search {
+  border-radius: var(--radius);
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+}
+
+/ ---------- Article ---------- /
+
+article h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+article h2 {
+  margin-top: 2.5rem;
+  font-weight: 700;
+}
+
+article h3 {
+  margin-top: 2rem;
+}
+
+/ ---------- Links ---------- /
+
+a.internal {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+a.internal:hover {
+  border-bottom-color: var(--secondary);
+}
+
+/ ---------- Code ---------- /
+
+pre {
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+code {
+  font-size: 0.92em;
+}
+
+/ ---------- Explorer ---------- /
+
+.explorer-content {
+  font-size: 0.93rem;
+}
+
+.folder-title {
+  font-weight: 600;
+}
+
+/ ---------- Graph ---------- /
+
+.graph {
+  opacity: 0.95;
+}
+
+.graph .node {
+  transition: all 0.2s ease;
+}
+
+.graph .node:hover {
+  transform: scale(1.2);
+}
+
+/ ---------- Footer ---------- /
+
+footer {
+  margin-top: 4rem;
+  opacity: 0.75;
+}
+
+/ ---------- Tables ---------- /
+
+table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/ ---------- Mobile ---------- */
+
+@media (max-width: 800px) {
+  article h1 {
+    font-size: 2rem;
+  }
+}
