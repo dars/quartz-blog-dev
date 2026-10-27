@@ -49,11 +49,13 @@ export default ((userOpts?: Partial<Options>) => {
             return (
               <li class="recent-li">
                 <a href={resolveRelative(fileData.slug!, page.slug!)} class="recent-card-link">
-                  {cover && (
-                    <div class="card-cover">
+                  <div class={classNames(undefined, "card-cover", cover ? "" : "card-cover-placeholder")}>
+                    {cover ? (
                       <img src={cover} alt={title} />
-                    </div>
-                  )}
+                    ) : (
+                      <span class="card-cover-glyph">{String(title).trim().charAt(0)}</span>
+                    )}
+                  </div>
                   <div class="card-body">
                     <h3>{title}</h3>
                     {description && <p class="card-desc">{description}</p>}
