@@ -49,9 +49,6 @@ export default ((userOpts?: Partial<Options>) => {
             return (
               <li class="recent-li">
                 <a href={resolveRelative(fileData.slug!, page.slug!)} class="recent-card-link">
-                  <div class={cover ? "card-cover" : "card-cover card-cover-default"}>
-                    {cover && <img src={cover} alt={title} />}
-                  </div>
                   <div class="card-body">
                     <h3>{title}</h3>
                     {description && <p class="card-desc">{description}</p>}
@@ -71,6 +68,9 @@ export default ((userOpts?: Partial<Options>) => {
                         </ul>
                       )}
                     </div>
+                  </div>
+                  <div class={cover ? "card-cover" : "card-cover card-cover-default"}>
+                    {cover && <img src={cover} alt="" />}
                   </div>
                 </a>
               </li>

@@ -9,7 +9,7 @@ import * as Plugin from "./quartz/plugins"
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "code4soul",
-    pageTitleSuffix: "Building AI Native Workflow | code4soul",
+    pageTitleSuffix: " | code4soul",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
