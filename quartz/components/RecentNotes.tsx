@@ -1,5 +1,5 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import { SimpleSlug, joinSegments, pathToRoot, resolveRelative } from "../util/path"
+import { SimpleSlug, resolveRelative } from "../util/path"
 import { QuartzPluginData } from "../plugins/vfile"
 import { byDateAndAlphabetical } from "./PageList"
 import style from "./styles/recentNotes.scss"
@@ -35,10 +35,6 @@ export default ((userOpts?: Partial<Options>) => {
     const opts = { ...defaultOptions(cfg), ...userOpts }
     const pages = allFiles.filter(opts.filter).sort(opts.sort)
     const remaining = Math.max(0, pages.length - opts.limit)
-    const defaultCover = joinSegments(
-      pathToRoot(fileData.slug!),
-      "static/brand/default-article-cover.webp",
-    )
     return (
       <div class={classNames(displayClass, "recent-notes")}>
         <h3>{opts.title ?? i18n(cfg.locale).components.recentNotes.title}</h3>
@@ -54,7 +50,7 @@ export default ((userOpts?: Partial<Options>) => {
               <li class="recent-li">
                 <a href={resolveRelative(fileData.slug!, page.slug!)} class="recent-card-link">
                   <div class={cover ? "card-cover" : "card-cover card-cover-default"}>
-                    <img src={cover || defaultCover} alt={cover ? title : ""} />
+                    {cover && <img src={cover} alt={title} />}
                   </div>
                   <div class="card-body">
                     <h3>{title}</h3>
