@@ -281,14 +281,14 @@ body[data-slug="index"] {
         line-height: 1.5;
       }
 
-      > h2 {
+      .home-topics > h2 {
         margin: 1.2rem 0 0.55rem;
         padding: 0;
         border: 0;
         font-size: 0.95rem;
       }
 
-      > h2 + ul {
+      .home-topics > ul {
         display: flex;
         flex-wrap: wrap;
         gap: 0.4rem;
@@ -296,12 +296,23 @@ body[data-slug="index"] {
         padding: 0;
         list-style: none;
 
-        > li {
-          padding: 0.15rem 0.65rem;
+        a {
+          display: inline-flex;
+          align-items: center;
+          box-sizing: border-box;
+          min-height: 2rem;
+          padding-inline: 0.65rem;
           border: 1px solid var(--lightgray);
           border-radius: 999px;
+          background: var(--highlight);
+          color: var(--secondary);
           font-size: 0.78rem;
           line-height: 1.5;
+
+          &:hover,
+          &:focus-visible {
+            border-color: var(--secondary);
+          }
         }
       }
     }
@@ -527,7 +538,7 @@ table {
       margin-bottom: 0.65rem;
     }
 
-    > h2 {
+    .home-topics > h2 {
       margin-top: 0.75rem;
     }
   }

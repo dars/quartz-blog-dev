@@ -102,6 +102,10 @@ export const ContentPage: QuartzEmitterPlugin<Partial<FullPageLayout>> = (userOp
 
       // find all slugs that changed or were added
       const changedSlugs = new Set<string>()
+      // The homepage's recent notes and topic links depend on the full list of published notes.
+      if (changeEvents.some(({ path: filePath }) => path.extname(filePath) === ".md")) {
+        changedSlugs.add("index")
+      }
       for (const changeEvent of changeEvents) {
         if (!changeEvent.file) continue
         if (changeEvent.type === "add" || changeEvent.type === "change") {
