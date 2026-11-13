@@ -80,6 +80,14 @@ export const FrontMatter: QuartzTransformerPlugin<Partial<Options>> = (userOpts)
             const tags = coerceToArray(coalesceAliases(data, ["tags", "tag"]))
             if (tags) data.tags = [...new Set(tags.map((tag: string) => slugTag(tag)))]
 
+            if (Array.isArray(data.topics)) {
+              data.topics = data.topics.filter(
+                (topic): topic is string => typeof topic === "string" && topic.trim().length > 0,
+              )
+            } else {
+              delete data.topics
+            }
+
             const aliases = coerceToArray(coalesceAliases(data, ["aliases", "alias"]))
             if (aliases) {
               data.aliases = aliases // frontmatter
@@ -139,6 +147,7 @@ declare module "vfile" {
       title: string
     } & Partial<{
         tags: string[]
+        topics: string[]
         aliases: string[]
         modified: string
         created: string

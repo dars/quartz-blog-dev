@@ -1,3 +1,9 @@
+---
+modified: "2026-06-08T21:09:44.000Z"
+tags:
+  - flutter
+---
+
 ## Swift 套件管理器和 UIScene
 從 CocoaPods 到 Swift Package Manager 的過渡仍在繼續。我們強烈鼓勵[外掛程式作者](https://docs.flutter.dev/packages-and-plugins/swift-package-manager/for-plugin-authors)採用 Swift Package Manager，因為它現在是 Apple 生態系統的標準。此外，為了確保與未來 iOS 版本的兼容性，Flutter 現在預設完全支援 [UIScene 生命週期](https://github.com/flutter/flutter/pull/178328)
 對於我還在習慣用 Cocoapods 的人來說，的確是應該要花點時間玩玩 SPM 了

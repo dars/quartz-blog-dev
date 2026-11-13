@@ -1,3 +1,9 @@
+---
+modified: "2026-06-17T22:42:23.000Z"
+tags:
+  - ai-native-development
+---
+
 [微笑慢跑](https://apps.apple.com/tw/app/%E5%BE%AE%E7%AC%91%E6%85%A2%E8%B7%91/id6780555502)
 
 想自己作一個紀錄慢慢跑的 App 已經很久了，從 AI 盛行前就一直想做一個，因為 App Store 上一直沒看到喜歡的設計。但是以前要自己手刻真的很懶，我是一個下班就很沒衝勁作 side project 的人 😆

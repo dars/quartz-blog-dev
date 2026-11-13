@@ -1,3 +1,9 @@
+---
+modified: "2026-06-08T21:09:44.000Z"
+tags:
+  - ai-native-development
+---
+
 因為很常需要裁切圖片當 wallpaper，預覽程式沒那麼方便，開 PS 又有點殺雞牛刀。所以就用 AI 開發了一個小 App
 
 手頭上還有兩個 mobile app 在開發，但是這個需求很小，大概一個晚上邊追劇邊跟 claude 聊聊就作完了

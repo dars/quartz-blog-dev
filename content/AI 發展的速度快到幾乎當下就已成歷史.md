@@ -1,3 +1,10 @@
+---
+modified: "2026-06-08T21:09:44.000Z"
+tags:
+  - ai-native-development
+  - productivity
+---
+
 我想起我跟朋友聊天 AI 的進展有多快？從我一開始使用 ChatGPT 把問題丟進 ChatGPT 等到 AI 回應，我再複製貼回自己的 IDE 裡，然後還不能貼太長的程式碼，他有時候會直接罷工，這時候的 AI 就像是一個相對聰明一點的 google
 
 然後 Cursor 出現，我可以在 IDE 裡直接 Tab 鍵一路敲下去，因為他知道我可能需要打什麼 code，遇到 switch case 他會幫我補完 case，非常強大的 auto complete 的功能，這時候我可以讓他看同一頁的程式碼，勉勉強強大概準確率在 6~70 分，我還是需要花一點時間校正，但是已經讓我的日常工作幫助很大了。
