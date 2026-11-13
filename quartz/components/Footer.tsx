@@ -3,6 +3,7 @@ import style from "./styles/footer.scss"
 import { version } from "../../package.json"
 import { i18n } from "../i18n"
 import { joinSegments, pathToRoot } from "../util/path"
+import { classNames } from "../util/lang"
 
 interface Options {
   links: Record<string, string>
@@ -19,7 +20,7 @@ export default ((opts?: Options) => {
     const brandDir = joinSegments(baseDir, "static/brand")
 
     return (
-      <footer class={displayClass}>
+      <footer class={classNames(displayClass, "site-footer")}>
         <div class="brand-footer">
           <div class="footer-scene" aria-hidden="true">
             {(["light", "dark"] as const).map((theme) => (

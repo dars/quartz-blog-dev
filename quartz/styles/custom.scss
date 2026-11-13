@@ -3,6 +3,7 @@
 
 :root {
   --radius: 14px;
+  --site-width: 1440px;
   --reading-width: 720px;
   --brand-heading-font: "Nunito", "Noto Sans TC", var(--headerFont);
   --reading-surface: #fffaf2;
@@ -24,7 +25,7 @@ body {
 }
 
 .page {
-  max-width: 1440px;
+  max-width: var(--site-width);
 }
 
 :where(a, button):focus-visible {
