@@ -1,10 +1,13 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { classNames } from "../util/lang"
+import { joinSegments, pathToRoot } from "../util/path"
 
-const ProfileImage: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
+const ProfileImage: QuartzComponent = ({ displayClass, fileData }: QuartzComponentProps) => {
+  const avatarPath = joinSegments(pathToRoot(fileData.slug!), "static/brand/avatar.png")
+
   return (
     <div class={classNames(displayClass, "profile-image-container")}>
-      <img src="/static/avatar.jpg" alt="Profile" class="profile-image" />
+      <img src={avatarPath} alt="戴眼鏡的熊與三花貓" class="profile-image" width="72" height="72" />
     </div>
   )
 }
