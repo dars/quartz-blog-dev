@@ -271,47 +271,13 @@ code {
     filter 0.5s ease;
 }
 
-.card-cover-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background:
-    radial-gradient(
-      circle at 30% 20%,
-      color-mix(in srgb, var(--secondary) 28%, transparent),
-      transparent 60%
-    ),
-    radial-gradient(
-      circle at 80% 90%,
-      color-mix(in srgb, var(--tertiary) 22%, transparent),
-      transparent 55%
-    ),
-    var(--lightgray);
-}
-
-.card-cover-glyph {
-  font-family: var(--brand-heading-font);
-  font-size: 4rem;
-  font-weight: 700;
-  color: var(--dark);
-  opacity: 0.35;
-  transition:
-    opacity 0.4s ease,
-    transform 0.4s ease;
-}
-
-.recent-li:first-child .card-cover-glyph {
-  font-size: 7rem;
+.card-cover-default img {
+  filter: none;
 }
 
 .recent-li:hover .card-cover img {
   transform: scale(1.03);
   filter: saturate(1);
-}
-
-.recent-li:hover .card-cover-glyph {
-  opacity: 0.55;
-  transform: scale(1.05);
 }
 
 .recent-li:hover .card-body h3 {
