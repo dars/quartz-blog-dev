@@ -11,6 +11,7 @@
 
 .brand-footer {
   overflow: hidden;
+  border: 1px solid var(--lightgray);
   border-radius: var(--radius);
   background: #021e3b;
 
@@ -44,7 +45,7 @@
   p,
   ul {
     margin: 0;
-    color: #d6e1ee;
+    color: #e1d8ce;
   }
 
   ul {
@@ -56,16 +57,16 @@
   }
 
   a {
-    color: #ffc166;
+    color: #e6b781;
 
     &:hover,
     &:focus-visible {
-      color: #fff6e0;
+      color: #f5e7d4;
       text-decoration: underline;
     }
 
     &:focus-visible {
-      outline: 2px solid #ffc166;
+      outline: 2px solid #e6b781;
       outline-offset: 3px;
     }
   }
