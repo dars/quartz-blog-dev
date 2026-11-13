@@ -285,12 +285,7 @@ a {
       grid-area: grid-center;
     }
 
-    & footer {
-      grid-area: grid-footer;
-    }
-
-    & .center,
-    & footer {
+    & .center {
       max-width: 100%;
       min-width: 100%;
       margin-left: auto;
@@ -302,9 +297,6 @@ a {
         margin-right: 0;
         margin-left: 0;
       }
-    }
-    & footer {
-      margin-left: 0;
     }
   }
 }

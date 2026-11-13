@@ -1,5 +1,5 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import { FullSlug, SimpleSlug, resolveRelative } from "../util/path"
+import { SimpleSlug, resolveRelative } from "../util/path"
 import { QuartzPluginData } from "../plugins/vfile"
 import { byDateAndAlphabetical } from "./PageList"
 import style from "./styles/recentNotes.scss"
@@ -49,7 +49,13 @@ export default ((userOpts?: Partial<Options>) => {
             return (
               <li class="recent-li">
                 <a href={resolveRelative(fileData.slug!, page.slug!)} class="recent-card-link">
-                  <div class={classNames(undefined, "card-cover", cover ? "" : "card-cover-placeholder")}>
+                  <div
+                    class={classNames(
+                      undefined,
+                      "card-cover",
+                      cover ? "" : "card-cover-placeholder",
+                    )}
+                  >
                     {cover ? (
                       <img src={cover} alt={title} />
                     ) : (

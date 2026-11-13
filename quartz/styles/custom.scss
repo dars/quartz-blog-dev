@@ -1,29 +1,26 @@
 @use "./base.scss";
-
-/* ================================================
-   Code4Soul — Dark Editorial Theme (Quartz 4.5.2)
-   ================================================ */
+@use "./variables.scss" as *;
 
 :root {
   --radius: 10px;
   --reading-width: 720px;
-  --serif: "Noto Serif TC", "Songti TC", serif;
+  --brand-heading-font: "Nunito", "Noto Sans TC", var(--headerFont);
+  --brand-orange-text: #a14800;
+}
+
+:root[saved-theme="dark"] {
+  --brand-orange-text: #ff8a00;
 }
 
 /* ---------- Base / Layout ---------- */
 
 body {
   -webkit-font-smoothing: antialiased;
+  font-family: "Inter", var(--bodyFont);
 }
 
 .page {
   max-width: 1440px;
-}
-
-.page > #quartz-body .sidebar.left .page-title {
-  font-family: var(--serif);
-  font-weight: 700;
-  letter-spacing: 0.02em;
 }
 
 /* ---------- Article reading column ---------- */
@@ -47,8 +44,13 @@ body {
   margin-right: auto;
 }
 
-h1, h2, h3, h4 {
-  font-family: var(--serif);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--brand-heading-font);
   letter-spacing: 0.01em;
 }
 
@@ -75,7 +77,6 @@ article blockquote {
   border-left: 3px solid var(--secondary);
   margin: 1.8rem 0;
   padding: 0.2rem 1.2rem;
-  font-family: var(--serif);
   color: var(--darkgray);
   font-style: normal;
 }
@@ -101,7 +102,9 @@ a.internal {
   background: none;
   text-decoration: none;
   border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 article a.internal,
@@ -156,7 +159,6 @@ code {
 .toc h3,
 .backlinks h3,
 .explorer h2 {
-  font-family: var(--serif);
   text-transform: none;
   color: var(--gray);
   font-size: 0.8rem;
@@ -181,7 +183,6 @@ code {
 /* ---------- Homepage: magazine ---------- */
 
 .recent-notes > h3 {
-  font-family: var(--serif);
   font-size: 0.85rem;
   letter-spacing: 0.3em;
   color: var(--gray);
@@ -265,7 +266,9 @@ code {
   border-radius: 0;
   display: block;
   filter: saturate(0.85);
-  transition: transform 0.5s ease, filter 0.5s ease;
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
 }
 
 .card-cover-placeholder {
@@ -273,18 +276,28 @@ code {
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--secondary) 28%, transparent), transparent 60%),
-    radial-gradient(circle at 80% 90%, color-mix(in srgb, var(--tertiary) 22%, transparent), transparent 55%),
+    radial-gradient(
+      circle at 30% 20%,
+      color-mix(in srgb, var(--secondary) 28%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 80% 90%,
+      color-mix(in srgb, var(--tertiary) 22%, transparent),
+      transparent 55%
+    ),
     var(--lightgray);
 }
 
 .card-cover-glyph {
-  font-family: var(--serif);
+  font-family: var(--brand-heading-font);
   font-size: 4rem;
   font-weight: 700;
   color: var(--dark);
   opacity: 0.35;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 
 .recent-li:first-child .card-cover-glyph {
@@ -315,7 +328,6 @@ code {
 
 .card-body h3 {
   margin: 0;
-  font-family: var(--serif);
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--dark);
@@ -366,18 +378,11 @@ code {
   padding: 0.05rem 0.55rem;
 }
 
-/* ---------- Tags / footer / tables ---------- */
+/* ---------- Tags / tables ---------- */
 
 a.internal.tag-link {
   border-radius: 999px;
   background: var(--highlight);
-}
-
-footer {
-  margin-top: 5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--lightgray);
-  color: var(--gray);
 }
 
 table {
@@ -393,7 +398,7 @@ table {
   }
 }
 
-@media (max-width: 800px) {
+@media ($mobile) {
   .article-title {
     font-size: 1.9rem;
   }
@@ -410,17 +415,37 @@ table {
   .recent-notes .recent-li:first-child .card-body h3 {
     font-size: 1.5rem;
   }
+  .sidebar.left .profile-image-container,
+  .sidebar.left img[alt*="rofile"] {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    scroll-padding-top: 8rem;
+  }
+
+  .page > #quartz-body .sidebar.left {
+    flex-wrap: wrap;
+    gap: 0.65rem;
+
+    > .flex-component {
+      flex-basis: 100%;
+    }
+
+    .search {
+      max-width: none;
+    }
+
+    .explorer .explorer-content {
+      padding-top: 7rem;
+    }
+  }
 }
 
 /* homepage: hide default "index" title/meta */
 body[data-slug="index"] .article-title,
 body[data-slug="index"] .content-meta {
   display: none;
-}
-
-@media (max-width: 800px) {
-  .sidebar.left .profile-image-container,
-  .sidebar.left img[alt*="rofile"] {
-    display: none;
-  }
 }
