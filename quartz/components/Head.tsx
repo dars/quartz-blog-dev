@@ -4,6 +4,7 @@ import { CSSResourceToStyleElement, JSResourceToScriptElement } from "../util/re
 import { googleFontHref, googleFontSubsetHref } from "../util/theme"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { unescapeHTML } from "../util/escape"
+import { getPageTitle } from "../util/pageTitle"
 import { CustomOgImagesEmitterName } from "../plugins/emitters/ogImage"
 export default (() => {
   const Head: QuartzComponent = ({
@@ -12,9 +13,7 @@ export default (() => {
     externalResources,
     ctx,
   }: QuartzComponentProps) => {
-    const titleSuffix = cfg.pageTitleSuffix ?? ""
-    const title =
-      (fileData.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title) + titleSuffix
+    const title = getPageTitle(cfg, fileData)
     const description =
       fileData.frontmatter?.socialDescription ??
       fileData.frontmatter?.description ??
