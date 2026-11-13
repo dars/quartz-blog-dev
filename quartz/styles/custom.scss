@@ -47,7 +47,10 @@ body {
   margin-right: auto;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--serif);
   letter-spacing: 0.01em;
 }
@@ -101,7 +104,9 @@ a.internal {
   background: none;
   text-decoration: none;
   border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 article a.internal,
@@ -265,7 +270,9 @@ code {
   border-radius: 0;
   display: block;
   filter: saturate(0.85);
-  transition: transform 0.5s ease, filter 0.5s ease;
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
 }
 
 .card-cover-placeholder {
@@ -273,8 +280,16 @@ code {
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--secondary) 28%, transparent), transparent 60%),
-    radial-gradient(circle at 80% 90%, color-mix(in srgb, var(--tertiary) 22%, transparent), transparent 55%),
+    radial-gradient(
+      circle at 30% 20%,
+      color-mix(in srgb, var(--secondary) 28%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 80% 90%,
+      color-mix(in srgb, var(--tertiary) 22%, transparent),
+      transparent 55%
+    ),
     var(--lightgray);
 }
 
@@ -284,7 +299,9 @@ code {
   font-weight: 700;
   color: var(--dark);
   opacity: 0.35;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 
 .recent-li:first-child .card-cover-glyph {
@@ -419,8 +436,40 @@ body[data-slug="index"] .content-meta {
 }
 
 @media (max-width: 800px) {
+  .page > #quartz-body .sidebar.left .page-title {
+    font-size: 1.25rem;
+  }
+
+  .page-title img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .page-title-slogan {
+    font-size: 0.69rem;
+  }
+
   .sidebar.left .profile-image-container,
   .sidebar.left img[alt*="rofile"] {
     display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .sidebar.left {
+    --sidebar-control-gap: 0.65rem;
+  }
+
+  .sidebar .search .search-button {
+    padding: 0;
+  }
+
+  .sidebar .search .search-button > p {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 }

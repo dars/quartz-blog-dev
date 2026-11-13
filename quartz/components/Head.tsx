@@ -82,7 +82,13 @@ export default (() => {
           </>
         )}
 
-        <link rel="icon" href={iconPath} />
+        <link rel="icon" type="image/png" sizes="96x96" href={iconPath} />
+        <link
+          rel="icon"
+          type="image/svg+xml"
+          sizes="any"
+          href={joinSegments(baseDir, "static/brand/favicon.svg")}
+        />
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
 

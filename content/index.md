@@ -1,4 +1,9 @@
-# **Code4Soul**
+---
+title: Building AI Native Workflow
+socialImage: og-image.png
+---
+
+# **code4soul**
 
 AI Native Development  
 Flutter Architecture  

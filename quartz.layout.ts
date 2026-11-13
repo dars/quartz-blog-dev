@@ -46,6 +46,7 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.MobileOnly(Component.Spacer()),
     Component.Flex({
+      gap: "var(--sidebar-control-gap, 1rem)",
       components: [
         {
           Component: Component.Search(),
@@ -77,6 +78,7 @@ export const defaultListPageLayout: PageLayout = {
     Component.ProfileImage(),
     Component.MobileOnly(Component.Spacer()),
     Component.Flex({
+      gap: "var(--sidebar-control-gap, 1rem)",
       components: [
         {
           Component: Component.Search(),
