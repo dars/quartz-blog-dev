@@ -9,13 +9,25 @@ export const Favicon: QuartzEmitterPlugin = () => ({
   async *emit({ argv }) {
     const iconPath = joinSegments(QUARTZ, "static", "icon.png")
 
-    const faviconContent = sharp(iconPath).resize(48, 48).toFormat("png")
+    const size = 32
+    const icon = await sharp(iconPath).resize(size, size).ensureAlpha().png().toBuffer()
+
+    // ICO directory header followed by one PNG-encoded image entry.
+    const directory = Buffer.alloc(22)
+    directory.writeUInt16LE(1, 2) // Icon type
+    directory.writeUInt16LE(1, 4) // Number of images
+    directory[6] = size
+    directory[7] = size
+    directory.writeUInt16LE(1, 10) // Color planes
+    directory.writeUInt16LE(32, 12) // Bits per pixel
+    directory.writeUInt32LE(icon.length, 14)
+    directory.writeUInt32LE(directory.length, 18)
 
     yield write({
       ctx: { argv } as BuildCtx,
       slug: "favicon" as FullSlug,
       ext: ".ico",
-      content: faviconContent,
+      content: Buffer.concat([directory, icon]),
     })
   },
   async *partialEmit() {},
