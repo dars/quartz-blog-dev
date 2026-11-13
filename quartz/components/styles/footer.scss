@@ -1,5 +1,20 @@
 @use "../../styles/variables.scss" as *;
 
+:root {
+  --footer-landscape: url("./static/brand/footer-landscape-light.webp");
+  --footer-scene-color: #f3dbc0;
+  --footer-meta-color: var(--reading-surface);
+  --footer-text-color: var(--darkgray);
+  --footer-link-color: var(--secondary);
+  --footer-link-hover: var(--tertiary);
+}
+
+:root[saved-theme="dark"] {
+  --footer-landscape: url("./static/brand/footer-landscape-dark.webp");
+  --footer-scene-color: #04162d;
+  --footer-meta-color: #071526;
+}
+
 .page > footer {
   margin-block: clamp(2rem, 5vw, 4rem) 2rem;
   padding-inline: 1rem;
@@ -13,23 +28,37 @@
   overflow: hidden;
   border: 1px solid var(--lightgray);
   border-radius: var(--radius);
-  background: #021e3b;
+  background: var(--footer-meta-color);
 
-  picture,
-  img {
-    display: block;
+  .footer-scene {
+    position: relative;
+    aspect-ratio: 3 / 1;
+    min-height: 10rem;
+    background: var(--footer-scene-color) var(--footer-landscape) center / cover no-repeat;
+
+    @media ($mobile) {
+      aspect-ratio: 2 / 1;
+    }
   }
 
-  img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 1;
-    margin: 0;
+  .footer-characters {
+    position: absolute;
+    bottom: 6%;
+    inset-inline: 0;
+    width: 60%;
+    height: 66%;
+    object-fit: contain;
+    object-position: center bottom;
+    margin: 0 auto;
     border-radius: 0;
 
     @media ($mobile) {
-      aspect-ratio: 1020 / 724;
+      width: 85%;
     }
+  }
+
+  .footer-characters-dark {
+    display: none;
   }
 
   .footer-meta {
@@ -45,7 +74,7 @@
   p,
   ul {
     margin: 0;
-    color: #e1d8ce;
+    color: var(--footer-text-color);
   }
 
   ul {
@@ -57,17 +86,27 @@
   }
 
   a {
-    color: #e6b781;
+    color: var(--footer-link-color);
 
     &:hover,
     &:focus-visible {
-      color: #f5e7d4;
+      color: var(--footer-link-hover);
       text-decoration: underline;
     }
 
     &:focus-visible {
-      outline: 2px solid #e6b781;
+      outline: 2px solid var(--footer-link-color);
       outline-offset: 3px;
     }
+  }
+}
+
+:root[saved-theme="dark"] .brand-footer {
+  .footer-characters-light {
+    display: none;
+  }
+
+  .footer-characters-dark {
+    display: block;
   }
 }

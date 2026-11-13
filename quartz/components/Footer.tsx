@@ -2,39 +2,39 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 import style from "./styles/footer.scss"
 import { version } from "../../package.json"
 import { i18n } from "../i18n"
-import { joinSegments } from "../util/path"
+import { joinSegments, pathToRoot } from "../util/path"
 
 interface Options {
   links: Record<string, string>
 }
 
 export default ((opts?: Options) => {
-  const Footer: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
+  const Footer: QuartzComponent = ({ displayClass, cfg, fileData }: QuartzComponentProps) => {
     const year = new Date().getFullYear()
     const links = opts?.links ?? []
-    // Quartz's SPA router rebases src but not srcset.
-    const baseDir = new URL(`https://${cfg.baseUrl ?? "example.com"}`).pathname
+    const baseDir =
+      fileData.slug === "404"
+        ? new URL(`https://${cfg.baseUrl ?? "example.com"}`).pathname
+        : pathToRoot(fileData.slug!)
     const brandDir = joinSegments(baseDir, "static/brand")
 
     return (
       <footer class={displayClass}>
         <div class="brand-footer">
-          <picture>
-            <source
-              media="(max-width: 800px)"
-              srcSet={joinSegments(brandDir, "footer-mobile.webp")}
-              width="1020"
-              height="724"
-            />
-            <img
-              src={joinSegments(brandDir, "footer-desktop.webp")}
-              alt=""
-              width="2172"
-              height="724"
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
+          <div class="footer-scene" aria-hidden="true">
+            {(["light", "dark"] as const).map((theme) => (
+              <img
+                key={theme}
+                class={`footer-characters footer-characters-${theme}`}
+                src={joinSegments(brandDir, `footer-characters-${theme}.webp`)}
+                alt=""
+                width="1050"
+                height="556"
+                loading="lazy"
+                decoding="async"
+              />
+            ))}
+          </div>
           <div class="footer-meta">
             <p>
               {i18n(cfg.locale).components.footer.createdWith}{" "}
