@@ -4,7 +4,7 @@
   --footer-landscape: url("./static/brand/footer-landscape-light.webp");
   --footer-desktop-position: 80%;
   --footer-scene-color: #f3dbc0;
-  --footer-meta-color: var(--reading-surface);
+  --footer-bottom-shade: rgb(249 239 219 / 90%);
   --footer-text-color: var(--darkgray);
   --footer-link-color: var(--secondary);
   --footer-link-hover: var(--tertiary);
@@ -14,7 +14,7 @@
   --footer-landscape: url("./static/brand/footer-landscape-dark.webp");
   --footer-desktop-position: calc(100% + 5.7vw - 6px);
   --footer-scene-color: #04162d;
-  --footer-meta-color: #071526;
+  --footer-bottom-shade: rgb(7 21 38 / 90%);
 }
 
 .site-footer {
@@ -22,19 +22,25 @@
 }
 
 .brand-footer {
+  display: grid;
+  grid-template-rows: 1fr auto;
   overflow: hidden;
   border-block-start: 1px solid var(--lightgray);
-  background: var(--footer-meta-color);
+  background:
+    linear-gradient(to top, var(--footer-bottom-shade), transparent 3.5rem),
+    var(--footer-scene-color) var(--footer-landscape) center / cover no-repeat;
+
+  @media ($desktop) {
+    // Keep the grass beneath the characters when wide screens crop the scene vertically.
+    background-position:
+      center,
+      center var(--footer-desktop-position);
+  }
 
   .footer-scene {
+    grid-area: 1 / 1 / 3 / 2;
     position: relative;
-    height: clamp(7.75rem, calc(20vw + 3.5rem), 22rem);
-    background: var(--footer-scene-color) var(--footer-landscape) center / cover no-repeat;
-
-    @media ($desktop) {
-      // Keep the grass beneath the characters when wide screens crop the scene vertically.
-      background-position: center var(--footer-desktop-position);
-    }
+    min-height: clamp(7.75rem, calc(20vw + 3.5rem), 22rem);
   }
 
   .footer-characters {
@@ -53,6 +59,7 @@
     }
 
     @media ($mobile) {
+      bottom: 2rem;
       width: 85%;
     }
   }
@@ -62,16 +69,19 @@
   }
 
   .footer-meta {
+    grid-area: 2 / 1;
+    position: relative;
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     justify-content: space-between;
-    gap: 0.35rem 1.5rem;
+    gap: 0.25rem 0.75rem;
+    width: 100%;
     max-width: var(--site-width);
     margin-inline: auto;
-    padding: 0.55rem clamp(1rem, 3vw, 2rem) 0.7rem;
-    font-size: 0.875rem;
+    padding: 0.3rem clamp(1rem, 3vw, 2rem) 0.55rem;
+    font-size: 0.75rem;
   }
 
   p,
