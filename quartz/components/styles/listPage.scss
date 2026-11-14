@@ -4,6 +4,7 @@ ul.section-ul {
   list-style: none;
   margin-top: 2em;
   padding-left: 0;
+  container-type: inline-size;
 }
 
 li.section-li {
@@ -11,12 +12,38 @@ li.section-li {
 
   & > .section {
     display: grid;
-    grid-template-columns: fit-content(8em) 3fr 1fr;
+    grid-template-columns: minmax(max-content, 8rem) minmax(0, 1fr) fit-content(13rem);
+    align-items: baseline;
+    gap: 0.35rem 0.75rem;
+
+    @container (max-width: 37rem) {
+      grid-template-columns: max-content minmax(0, 1fr);
+
+      & > .tags {
+        grid-column: 2;
+        justify-content: flex-start;
+      }
+    }
 
     @media all and ($mobile) {
+      grid-template-columns: max-content minmax(0, 1fr);
+
       & > .tags {
         display: none;
       }
+    }
+
+    & > .tags > li {
+      min-width: 0;
+      max-width: 100%;
+      white-space: normal;
+    }
+
+    & > .tags .tag-link {
+      display: block;
+      margin: 0;
+      overflow-wrap: anywhere;
+      text-wrap: wrap;
     }
 
     & > .desc > h3 > a {
@@ -24,15 +51,16 @@ li.section-li {
     }
 
     & .meta {
-      margin: 0 1em 0 0;
+      margin: 0;
       opacity: 0.6;
+      white-space: nowrap;
     }
   }
 }
 
 // modifications in popover context
-.popover .section {
-  grid-template-columns: fit-content(8em) 1fr !important;
+.popover li.section-li > .section {
+  grid-template-columns: max-content minmax(0, 1fr);
 
   & > .tags {
     display: none;
