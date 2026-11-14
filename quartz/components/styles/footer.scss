@@ -2,8 +2,6 @@
 
 :root {
   --footer-landscape: url("./static/brand/footer-landscape-light.webp");
-  --footer-desktop-position: 80%;
-  --footer-scene-color: #f3dbc0;
   --footer-bottom-shade: rgb(249 239 219 / 90%);
   --footer-text-color: var(--darkgray);
   --footer-link-color: var(--secondary);
@@ -12,8 +10,6 @@
 
 :root[saved-theme="dark"] {
   --footer-landscape: url("./static/brand/footer-landscape-dark.webp");
-  --footer-desktop-position: calc(100% + 5.7vw - 6px);
-  --footer-scene-color: #04162d;
   --footer-bottom-shade: rgb(7 21 38 / 90%);
 }
 
@@ -25,17 +21,11 @@
   display: grid;
   grid-template-rows: 1fr auto;
   overflow: hidden;
-  border-block-start: 1px solid var(--lightgray);
+  // Wide viewports can crop into the source fade, so blend that edge into the page too.
   background:
+    linear-gradient(to bottom, var(--light), transparent clamp(2rem, 5vw, 4rem)),
     linear-gradient(to top, var(--footer-bottom-shade), transparent 3.5rem),
-    var(--footer-scene-color) var(--footer-landscape) center / cover no-repeat;
-
-  @media ($desktop) {
-    // Keep the grass beneath the characters when wide screens crop the scene vertically.
-    background-position:
-      center,
-      center var(--footer-desktop-position);
-  }
+    var(--light) var(--footer-landscape) center bottom / cover no-repeat;
 
   .footer-scene {
     grid-area: 1 / 1 / 3 / 2;
@@ -59,7 +49,7 @@
     }
 
     @media ($mobile) {
-      bottom: 2rem;
+      bottom: 1.25rem;
       width: 85%;
     }
   }
