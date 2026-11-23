@@ -7,6 +7,9 @@ updates:
     groups:
       production-dependencies:
         applies-to: "version-updates"
+        update-types:
+          - "minor"
+          - "patch"
         patterns:
           - "*"
   - package-ecosystem: "github-actions"
